@@ -61,3 +61,41 @@ if successful youll receive a json payload with information about your userid an
 [AWS CLI Env Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
 
 Need to generate AWS CLI credentials to enter as variables, use AWS SSO and copy paste.
+
+## Terraform basics
+
+## Terraform Registry:
+https://registry.terraform.io/
+
+providers - how you directly interact with an api
+
+module - template to provide commonly used actions - portable code
+
+
+### Random provider:
+https://registry.terraform.io/providers/hashicorp/random/latest
+
+```json
+resource "random_string" "random" {
+  length           = 16
+  special          = true
+  override_special = "/@£$"
+}
+```
+
+
+
+### Other ways to output
+```sh
+terraform output
+random_bucket_name = "ZhQzoI8GMpvy0cI1"
+
+terraform output random_bucket_name
+"ZhQzoI8GMpvy0cI1"
+```
+
+Terraform init plan apply!
+
+TF state file = state of all the things, resources, bucket name  etc. - do not f*ck with
+
+`.terraform` directory contains binaries of terraform providers
