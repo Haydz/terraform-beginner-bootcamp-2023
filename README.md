@@ -36,3 +36,17 @@ gp PROJECT_ROOT='/workspace/terraform-beginner-bootcamp-2023'
 ```
 
 all future workspace will start with that env var
+
+
+## AWS installation
+aws is installed for this project via the bash script
+
+
+dont use homebrew version.
+
+Check if AWS credentials are working:
+```sh
+aws sts get-caler-identify
+```
+
+[AWS CLI Env Vars](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html)
