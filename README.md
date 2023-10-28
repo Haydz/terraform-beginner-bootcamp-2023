@@ -75,14 +75,14 @@ module - template to provide commonly used actions - portable code
 ### Random provider:
 https://registry.terraform.io/providers/hashicorp/random/latest
 
-```json
+
+```hcl
 resource "random_string" "random" {
   length           = 16
   special          = true
   override_special = "/@£$"
 }
 ```
-
 
 
 ### Other ways to output
