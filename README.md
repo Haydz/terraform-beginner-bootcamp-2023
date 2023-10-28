@@ -75,6 +75,7 @@ module - template to provide commonly used actions - portable code
 ### Random provider:
 https://registry.terraform.io/providers/hashicorp/random/latest
 
+
 ```hcl
 resource "random_string" "random" {
   length           = 16
@@ -82,7 +83,6 @@ resource "random_string" "random" {
   override_special = "/@£$"
 }
 ```
-
 
 
 ### Other ways to output
