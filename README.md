@@ -99,3 +99,60 @@ Terraform init plan apply!
 TF state file = state of all the things, resources, bucket name  etc. - do not f*ck with
 
 `.terraform` directory contains binaries of terraform providers
+
+
+To output bucket name = .bucket:
+```hcl
+output "random_bucket_name" {
+
+  value = aws_s3_bucket.example.bucket
+
+}
+```
+
+To include random within other objects:
+
+create the random string name with preffered values:
+
+```hcl
+resource "random_string" "bucket_name" {
+  length  = 16
+  lower   = true
+  upper   = false
+  special = false
+  # override_special = ""
+}```
+
+
+then include that in a name or field:
+```hcl
+resource "aws_s3_bucket" "example" {
+  bucket = "haydn-${random_string.bucket_name.result}"
+}
+```
+
+
+
+
+# VScode cheat sheet
+
+Multi Cursor Selection
+**Using Keyboard Shortcut:**
+Hold Alt (Windows/Linux) or Option (Mac) and then click at the points where you want the cursors.
+
+
+**Selecting all occurrences of a word:**
+
+Place the cursor on the word and press Ctrl + Shift + L or Cmd + Shift + L.
+
+**To edit the end of multiple lines:**
+Adding a cursor at the end/beginning of each line in a selection:
+
+Make a selection of multiple lines, then press Shift + Alt + I.
+
+
+# Git cheat sheet
+
+commit without signing requirement:
+```sh
+git commit --no-gpg-sign -m "#12 add random terraform provider"```
