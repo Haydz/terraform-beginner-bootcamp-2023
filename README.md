@@ -54,7 +54,7 @@ if successful youll receive a json payload with information about your userid an
 {
     "UserId": "sdfsdfsd:email",
     "Account": "1234567891012",
-    "Arn": "arn:aws:sts::1234567891012:assumed-role/
+    "Arn": "arn:aws:sts::1234567891012:assumed-role/"
 }
 ```
 
