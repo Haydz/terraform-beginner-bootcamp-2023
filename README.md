@@ -163,8 +163,28 @@ git commit --no-gpg-sign -m "#12 add random terraform provider"
 https://app.terraform.io/app/terrorhaydz/workspaces
 
 can store state here.
+have some special work with gitpod and token format in gitpod.
 
 up to 500 resources for $free!
 
 Need to login to create a token
 Documentation: terraform.io/docs/cloud
+
+
+## Credentials for Terraform Cloud
+- include all 3
+AWS_ACCESS_KEY_ID
+AWS_SECRET_ACCESS_KEY
+AWS_SESSION_TOKEN
+
+
+### Issues with Terarform cloud and gitpod
+
+When attempting to run `terraform login` it will launch bash to generate a token, but doesnt work.
+
+Manually generate a token in Terraform cloud.
+
+Then create file manually:
+```sh
+touch /home/gitpod.terraform.d/credentials/tfrc.json
+```
