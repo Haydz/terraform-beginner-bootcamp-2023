@@ -155,4 +155,16 @@ Make a selection of multiple lines, then press Shift + Alt + I.
 
 commit without signing requirement:
 ```sh
-git commit --no-gpg-sign -m "#12 add random terraform provider"```
+git commit --no-gpg-sign -m "#12 add random terraform provider"
+```
+
+
+# Terraform cloud
+https://app.terraform.io/app/terrorhaydz/workspaces
+
+can store state here.
+
+up to 500 resources for $free!
+
+Need to login to create a token
+Documentation: terraform.io/docs/cloud
