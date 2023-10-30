@@ -188,3 +188,5 @@ Then create file manually:
 ```sh
 touch /home/gitpod.terraform.d/credentials/tfrc.json
 ```
+
+then need to provide the correct json format,
