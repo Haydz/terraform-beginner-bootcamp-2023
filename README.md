@@ -190,3 +190,36 @@ touch /home/gitpod.terraform.d/credentials/tfrc.json
 ```
 
 then need to provide the correct json format,
+
+### Terraform alias
+add to bash profile:
+`~/.bash_profile`
+`source ~/.bash_profile`
+
+```
+alias tf="terraform"
+```
+Use Chatgpt to create a  bash script
+
+
+```bash
+#!/bin/bash
+
+# Define the alias you want to add
+ALIAS_DEFINITION='alias tf="terraform"'
+
+# Define the file you want to add it to
+PROFILE_FILE="$HOME/.bash_profile"
+
+# Check if the alias already exists in the file
+if grep -q "$ALIAS_DEFINITION" "$PROFILE_FILE"; then
+    echo "The alias '$ALIAS_DEFINITION' already exists in $PROFILE_FILE"
+else
+    # Add the alias to the end of the file
+    echo "$ALIAS_DEFINITION" >> "$PROFILE_FILE"
+    echo "The alias '$ALIAS_DEFINITION' has been added to $PROFILE_FILE"
+fi
+
+# Refresh the profile to make the alias available in the current session
+source "$PROFILE_FILE"
+```
