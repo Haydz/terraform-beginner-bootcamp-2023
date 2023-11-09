@@ -158,6 +158,25 @@ commit without signing requirement:
 git commit --no-gpg-sign -m "#12 add random terraform provider"
 ```
 
+## Adding a tag to a branch
+This is helpful if you need to add a tag where you missed one.
+
+Process:
+- find the commit/branch in GH. Grab the SHA use git checkout
+```bash
+git checkout <sha>
+
+git tag <number>
+
+git tags --push
+
+#delete tag
+git tag -d push
+
+```
+
+then add the tag
+
 
 # Terraform cloud
 https://app.terraform.io/app/terrorhaydz/workspaces
@@ -223,3 +242,34 @@ fi
 # Refresh the profile to make the alias available in the current session
 source "$PROFILE_FILE"
 ```
+
+
+
+
+# Terraform - Security
+Write | Plan | Apply
+
+
+AWS Cloud formation. (provider specific)
+TF is multi cloud
+
+Shared risk with terraform: unauthorized access, secrets etc
+
+DIfficulties:
+- User Management
+- Permission and Access  management
+- State management
+- auto deploy is a double edged swor
+- github
+- terraform modules
+
+Terraform Cloud setup:
+- setup organization
+- workspace is a logical boundary between projects
+- Project can be collection of workspaces
+- can connect directly to a version control provider (github)
+- allow TC only access to individual repos (least priv)
+- can auto deploy on repo updates
+- allows private modules
+- Team member control, Team owners super admin
+  - Can create team members
