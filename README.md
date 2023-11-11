@@ -273,3 +273,8 @@ Terraform Cloud setup:
 - allows private modules
 - Team member control, Team owners super admin
   - Can create team members
+  - secret - allows only team members apart of the project to see it
+- only use modules from sources you trust
+- Limit access to VCS repositories
+- Limit access over-sharing workspaces between themsevles
+- compliance related to org
