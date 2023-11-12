@@ -28,18 +28,18 @@ can supply a file:
 `terraform plan -var-file=”prod.tfvars”`
 [link](https://spacelift.io/blog/terraform-tfvars)
 
-## terraform.tfvars
+### terraform.tfvars
 default file tlo load in tf variables in bulk
 
-## auto.tfvars
+### auto.tfvars
 Name any file with an extension `.auto.tfvars` and it will be loaded as a variable sfile.
 
-## Tf vars precedence:
+### Tf vars precedence:
 [Link](https://spacelift.io/blog/terraform-tfvars)
 
 
 
-## Lading Terraform input variables:
+### Loading Terraform input variables:
 [Terraofrm inout variables](https://developer.hashicorp.com/terraform/language/values/variables)
 
 examples:
@@ -68,4 +68,19 @@ variable "docker_ports" {
   ]
 }
 
+```
+
+
+## Terraform Import:
+
+Importing resources that are not in the state file.
+
+
+```bash
+terraform import aws_s3_bucket.exam
+ple haydn-31s850ggs4hym76c
+aws_s3_bucket.example: Importing from ID "haydn-31s850ggs4hym76c"...
+aws_s3_bucket.example: Import prepared!
+  Prepared aws_s3_bucket for import
+aws_s3_bucket.example: Refreshing state... [id=haydn-31s850ggs4hym76c]
 ```
