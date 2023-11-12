@@ -1,4 +1,33 @@
+
+
+
+
 # Terraform Beginner Bootcamp 2023
+[YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZUjuD-A)
+
+[TOC Creator from markdown](https://ecotrust-canada.github.io/markdown-toc/)
+## Table of contents
+- [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)
+  * [Semantic Versioning :mage:](#semantic-versioning--mage-)
+  * [Installing Terraform](#installing-terraform)
+  * [Shebang for bash scripts](#shebang-for-bash-scripts)
+  * [Gitpod tasks](#gitpod-tasks)
+- [testing](#testing)
+    + [Working with Env Vars](#working-with-env-vars)
+    + [Gipot env vars](#gipot-env-vars)
+  * [AWS installation](#aws-installation)
+  * [Terraform basics](#terraform-basics)
+  * [Terraform Registry:](#terraform-registry-)
+    + [Random provider:](#random-provider-)
+    + [Other ways to output](#other-ways-to-output)
+- [VScode cheat sheet](#vscode-cheat-sheet)
+- [Git cheat sheet](#git-cheat-sheet)
+  * [Adding a tag to a branch](#adding-a-tag-to-a-branch)
+- [Terraform cloud](#terraform-cloud)
+  * [Credentials for Terraform Cloud](#credentials-for-terraform-cloud)
+    + [Issues with Terarform cloud and gitpod](#issues-with-terarform-cloud-and-gitpod)
+    + [Terraform alias](#terraform-alias)
+- [Terraform - Security](#terraform---security)
 
 ## Semantic Versioning :mage:
 Found here: https://semver.org/
