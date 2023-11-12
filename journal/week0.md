@@ -12,7 +12,7 @@ Week 0 Notes
   * [Gitpod tasks](#gitpod-tasks)
 - [testing](#testing)
     + [Working with Env Vars](#working-with-env-vars)
-    + [Gipot env vars](#gipot-env-vars)
+    + [Gipod env vars](#gipot-env-vars)
   * [AWS installation](#aws-installation)
   * [Terraform basics](#terraform-basics)
   * [Terraform Registry:](#terraform-registry-)
@@ -223,6 +223,7 @@ AWS_ACCESS_KEY_ID
 AWS_SECRET_ACCESS_KEY
 AWS_SESSION_TOKEN
 
+**Make sure to have them as enviornment variables instead of terraform variables**
 
 ### Issues with Terarform cloud and gitpod
 
