@@ -1,6 +1,4 @@
-
-
-
+Week 0 Notes
 
 # Terraform Beginner Bootcamp 2023
 [YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZUjuD-A)
