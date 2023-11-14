@@ -1,3 +1,31 @@
+module "terrahouse_aws" {
+  source = "./modules/terrahouse_aws"
+  # user_uuid   = "c96b5d6c-e138-4a75-8f2d-70c4da5786d3"
+  # bucket_name = "haydn-31s850ggs4hym76c"
+  user_uuid   = var.user_uuid
+  bucket_name = var.bucket_name
+
+}
+
+
+# terraform {
+#   # cloud {
+#   #   organization = "terrorhaydz"
+
+#   #   workspaces {
+#   #     name = "terrahouse-1"
+#   #   }
+#   # }
+
+#   required_providers {
+
+#     aws = {
+#       source  = "hashicorp/aws"
+#       version = "5.23.1"
+#     }
+
+#   }
+# }
 
 
 
@@ -9,10 +37,4 @@
 #   # override_special = ""
 # }
 
-resource "aws_s3_bucket" "website_bucket" {
-  bucket = var.bucket_name
-  tags = {
-    UserUuid = var.user_uuid
-    Employee = "Haydn Johnson"
-  }
-}
+#
