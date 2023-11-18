@@ -6,6 +6,18 @@ variable "bucket_name" {
   type = string
 }
 
+variable "index_html_filepath" {
+  type    = string
+  default = "/public/index.html"
+}
+
+variable "error_html_filepath" {
+  type    = string
+  default = "/public/error.html"
+}
+# index_html_filepath =
+# error_html_filepath =
+
 # variable "bucket_name" {
 #   type        = string
 #   description = "The name of the S3 bucket"
