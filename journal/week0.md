@@ -1,7 +1,7 @@
 Week 0 Notes
 
 # Terraform Beginner Bootcamp 2023
-[YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZUjuD-A)
+[YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZU juD-A)
 
 [TOC Creator from markdown](https://ecotrust-canada.github.io/markdown-toc/)
 ## Table of contents
@@ -157,9 +157,50 @@ resource "aws_s3_bucket" "example" {
   bucket = "haydn-${random_string.bucket_name.result}"
 }
 ```
+### For_each
+
+allows looping through a list, to reduce duplicate code
+
+Example usage:
+
+```hcl
+locals {
+  files_to_upload = {
+    "index.html" = "${path.root}/public/index.html",
+    "error.html" = "${path.root}/public/error.html"
+  }
+}
+
+resource "aws_s3_object" "website_files" {
+  for_each = local.files_to_upload
+
+  bucket = aws_s3_bucket.website_bucket.bucket
+  key    = each.key
+  source = each.value
+  etag   = filemd5(each.value)
+}
+```
+
+### Working with Files in Terraform
+
+#### Fileexists function
+adds validation for ensuring a file exists
+[Link](https://developer.hashicorp.com/terraform/language/functions/fileexists)
+eg:
+```hcl
+variable "error_html_filepath" {
+  type = string
+
+  validation {
+    condition     = fileexists(var.error_html_filepath)
+    error_message = "The path for the error.html file does not exist"
+  }
+}
 
 
 
+
+```
 
 # VScode cheat sheet
 

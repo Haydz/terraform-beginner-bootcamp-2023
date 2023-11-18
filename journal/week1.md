@@ -122,3 +122,29 @@ Remember that the module needs to declare the variables it ints own variables.tf
   user_uuid   = var.user_uuid
   bucket_name = var.bucket_name
 ```
+
+
+## S3 Website hosting
+[Link](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/s3_bucket_website_configuration)
+
+```hcl
+resource "aws_s3_bucket_website_configuration" "website_configuration" {
+  bucket = aws_s3_bucket.website_bucket.bucket
+
+  index_document {
+    suffix = "index.html"
+  }
+  error_document {
+    key = "error.html"
+  }
+}
+```
+
+
+## Working with Files in Terraform
+
+### Path Variable
+There us a special variable called `path` that allows us to refernce local paths:
+- path.module = get the path for current modules
+- path.root = get the path for the root module
+[Special Path Variable](https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info)
