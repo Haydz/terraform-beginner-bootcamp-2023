@@ -7,6 +7,7 @@ module "terrahouse_aws" {
 
   index_html_filepath = "${path.root}${var.index_html_filepath}"
   error_html_filepath = "${path.root}${var.error_html_filepath}"
+  content_version     = var.content_version
 }
 
 

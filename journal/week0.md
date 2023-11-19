@@ -1,10 +1,6 @@
 Week 0 Notes
 
-# Terraform Beginner Bootcamp 2023
-[YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZU juD-A)
-
-[TOC Creator from markdown](https://ecotrust-canada.github.io/markdown-toc/)
-## Table of contents
+# Table of Contents:
 - [Terraform Beginner Bootcamp 2023](#terraform-beginner-bootcamp-2023)
   * [Semantic Versioning :mage:](#semantic-versioning--mage-)
   * [Installing Terraform](#installing-terraform)
@@ -12,12 +8,19 @@ Week 0 Notes
   * [Gitpod tasks](#gitpod-tasks)
 - [testing](#testing)
     + [Working with Env Vars](#working-with-env-vars)
-    + [Gipod env vars](#gipot-env-vars)
+    + [Gipot env vars](#gipot-env-vars)
   * [AWS installation](#aws-installation)
   * [Terraform basics](#terraform-basics)
   * [Terraform Registry:](#terraform-registry-)
     + [Random provider:](#random-provider-)
     + [Other ways to output](#other-ways-to-output)
+    + [For_each](#for-each)
+    + [Working with Files in Terraform](#working-with-files-in-terraform)
+      - [Fileexists function](#fileexists-function)
+    + [Data sources](#data-sources)
+    + [Working with JSON](#working-with-json)
+    + [Changing the LifeCycle of Resources](#changing-the-lifecycle-of-resources)
+    + [Only updating when content version is updated](#only-updating-when-content-version-is-updated)
 - [VScode cheat sheet](#vscode-cheat-sheet)
 - [Git cheat sheet](#git-cheat-sheet)
   * [Adding a tag to a branch](#adding-a-tag-to-a-branch)
@@ -26,6 +29,12 @@ Week 0 Notes
     + [Issues with Terarform cloud and gitpod](#issues-with-terarform-cloud-and-gitpod)
     + [Terraform alias](#terraform-alias)
 - [Terraform - Security](#terraform---security)
+
+
+# Terraform Beginner Bootcamp 2023
+[YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZU juD-A)
+
+[TOC Creator from markdown](https://ecotrust-canada.github.io/markdown-toc/)
 
 ## Semantic Versioning :mage:
 Found here: https://semver.org/
@@ -225,6 +234,44 @@ Used jsonencode to create the jsonpolicy inline for the bucket policy
 ```hcl
 jsonencode({"hello"="world"})
 {"hello":"world"}
+```
+
+
+### Changing the LifeCycle of Resources
+[Meta Arguments Lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle)
+
+
+### Only updating when content version is updated
+[Tf_data](https://developer.hashicorp.com/terraform/language/resources/terraform-data)
+
+Instead of changing everytime the file changes, we can have it tied to a content version.
+
+We start with a variable:
+```hcl
+variable "content_version" {
+  type        = number
+  description = "The version number, must be a positive integer"
+}
+```
+
+then apply that to the file we wantwith the lifecycle. It is setting it to ignore etag changes, and only replace whtn the variable content_version is updated.
+
+```hcl
+resource "aws_s3_object" "website_files" {
+  for_each = local.files_to_upload
+
+  bucket       = aws_s3_bucket.website_bucket.bucket
+  key          = each.key
+  source       = each.value
+  content_type = "text/html"
+  etag         = filemd5(each.value)
+
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes       = [etag]
+  }
+
+}
 ```
 
 # VScode cheat sheet
