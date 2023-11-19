@@ -274,6 +274,39 @@ resource "aws_s3_object" "website_files" {
 }
 ```
 
+### Provisioners
+Provisioners execute commands on compute instances. - aka aws commands
+[Provisioners](https://developer.hashicorp.com/terraform/language/resources/provisioners/syntax)
+
+Not recommended, but companies still use.
+#### Local-Exec
+Will execute command locally, on machine running tf commands.
+
+```hcl
+
+resource "aws_instance" "web" {
+  # ...
+
+  provisioner "local-exec" {
+    command = "echo The server's IP address is ${self.private_ip}"
+  }
+}
+```
+
+#### Remote Exec
+Will execute on a machine that you target, need to provide credentials (SSH).
+
+```hcl
+  provisioner "remote-exec" {
+    inline = [
+      "puppet apply",
+      "consul join ${aws_instance.web.private_ip}",
+    ]
+  }
+}
+
+```
+
 # VScode cheat sheet
 
 Multi Cursor Selection
