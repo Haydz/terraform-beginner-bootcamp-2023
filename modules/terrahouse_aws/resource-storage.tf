@@ -48,9 +48,16 @@ resource "aws_s3_object" "website_files" {
   source       = each.value
   content_type = "text/html"
   etag         = filemd5(each.value)
+
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes       = [etag]
+  }
+
+
 }
 
-
+# https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-cloudfront-introduces-origin-access-control-oac/
 resource "aws_s3_bucket_policy" "bucket_policy" {
   bucket = aws_s3_bucket.website_bucket.bucket
   # policy = data.aws_iam_policy_document.allow_access_from_another_account.json
@@ -75,4 +82,9 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
     }
 
   )
+}
+
+
+resource "terraform_data" "content_version" {
+  input = var.content_version
 }

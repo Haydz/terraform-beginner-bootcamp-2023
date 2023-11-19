@@ -27,3 +27,9 @@ variable "error_html_filepath" {
 #     error_message = "The bucket name must be a valid S3 bucket name: lowercase letters, numbers, and hyphens, between 3 and 63 characters long."
 #   }
 # }
+
+
+variable "content_version" {
+  type        = number
+  description = "The version number, must be a positive integer"
+}
