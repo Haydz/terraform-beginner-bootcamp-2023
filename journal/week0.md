@@ -196,10 +196,35 @@ variable "error_html_filepath" {
     error_message = "The path for the error.html file does not exist"
   }
 }
+```
+
+### Data sources
+[Link](https://developer.hashicorp.com/terraform/language/data-sources)
+This allows us to source data from Cloud resources.
+
+Useful when we want to reference cloud resources without importing them.
+
+eg:
+
+```hcl
+data "aws_caller_identity" "current" {}
+
+output "account_id" {
+  value = data.aws_caller_identity.current.account_id
+}
 
 
+```
+[call identity](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity)
 
+### Working with JSON
+[jsonencode](https://developer.hashicorp.com/terraform/language/functions/jsonencode)
 
+Used jsonencode to create the jsonpolicy inline for the bucket policy
+
+```hcl
+jsonencode({"hello"="world"})
+{"hello":"world"}
 ```
 
 # VScode cheat sheet
