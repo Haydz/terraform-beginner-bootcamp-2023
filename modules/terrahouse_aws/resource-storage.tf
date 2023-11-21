@@ -1,6 +1,6 @@
 locals {
   files_to_upload = {
-    "index.html" = var.index_html_filepath
+    "index.html" = var.index_html_filepath,
     "error.html" = var.error_html_filepath
   }
 }
@@ -37,7 +37,7 @@ resource "aws_s3_bucket_website_configuration" "website_configuration" {
 #   etag = filemd5("${path.root}/public/index.html")
 # }
 
-# Fo
+
 
 
 resource "aws_s3_object" "website_files" {

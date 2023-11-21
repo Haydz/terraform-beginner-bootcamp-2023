@@ -1,3 +1,13 @@
+terraform {
+  cloud {
+    organization = "terrorhaydz"
+
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
+}
+
 module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"
   # user_uuid   = "c96b5d6c-e138-4a75-8f2d-70c4da5786d3"
@@ -10,14 +20,7 @@ module "terrahouse_aws" {
 }
 
 
-# terraform {
-#   # cloud {
-#   #   organization = "terrorhaydz"
 
-#   #   workspaces {
-#   #     name = "terrahouse-1"
-#   #   }
-#   # }
 
 #   required_providers {
 

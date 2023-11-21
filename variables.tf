@@ -15,6 +15,8 @@ variable "error_html_filepath" {
   type    = string
   default = "/public/error.html"
 }
+
+
 # index_html_filepath =
 # error_html_filepath =
 

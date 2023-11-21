@@ -1,14 +1,4 @@
-
-
 terraform {
-  # cloud {
-  #   organization = "terrorhaydz"
-
-  #   workspaces {
-  #     name = "terrahouse-1"
-  #   }
-  # }
-
   required_providers {
 
     aws = {
