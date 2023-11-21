@@ -13,6 +13,11 @@ resource "aws_s3_bucket" "website_bucket" {
   }
 }
 
+
+
+
+
+
 #
 resource "aws_s3_bucket_website_configuration" "website_configuration" {
   bucket = aws_s3_bucket.website_bucket.bucket
@@ -53,8 +58,18 @@ resource "aws_s3_object" "website_files" {
     replace_triggered_by = [terraform_data.content_version.output]
     ignore_changes       = [etag]
   }
+}
 
-
+resource "aws_s3_object" "upload_assets" {
+  for_each = fileset("${var.assets_path}", "*.{jpeg,png,gif}")
+  bucket   = var.bucket_name
+  key      = "assets/${each.key}"
+  source   = "${var.assets_path}${each.key}"
+  etag     = filemd5("${var.assets_path}${each.key}")
+  lifecycle {
+    replace_triggered_by = [terraform_data.content_version.output]
+    ignore_changes       = [etag]
+  }
 }
 
 # https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-cloudfront-introduces-origin-access-control-oac/

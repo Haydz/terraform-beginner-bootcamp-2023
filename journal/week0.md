@@ -32,7 +32,7 @@ Week 0 Notes
 
 
 # Terraform Beginner Bootcamp 2023
-[YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZU juD-A)
+[YT Link](https://www.youtube.com/playlist?list=PLBfufR7vyJJ4q5YCPl4o2XAzGRZUjuD-A)
 
 [TOC Creator from markdown](https://ecotrust-canada.github.io/markdown-toc/)
 
@@ -166,7 +166,7 @@ resource "aws_s3_bucket" "example" {
   bucket = "haydn-${random_string.bucket_name.result}"
 }
 ```
-### For_each
+### For Expressions
 
 allows looping through a list, to reduce duplicate code
 
@@ -188,6 +188,14 @@ resource "aws_s3_object" "website_files" {
   source = each.value
   etag   = filemd5(each.value)
 }
+```
+
+
+
+[Link](https://developer.hashicorp.com/terraform/language/expressions/for)
+
+```hcl
+[for s in var.list : upper(s)]
 ```
 
 ### Working with Files in Terraform
