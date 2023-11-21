@@ -1,3 +1,13 @@
+terraform {
+  cloud {
+    organization = "terrorhaydz"
+
+    workspaces {
+      name = "terraform-cloud"
+    }
+  }
+}
+
 module "terrahouse_aws" {
   source = "./modules/terrahouse_aws"
   # user_uuid   = "c96b5d6c-e138-4a75-8f2d-70c4da5786d3"
@@ -8,6 +18,7 @@ module "terrahouse_aws" {
   index_html_filepath = "${path.root}${var.index_html_filepath}"
   error_html_filepath = "${path.root}${var.error_html_filepath}"
   content_version     = var.content_version
+  assets_path         = "${path.root}var.assets_path"
 }
 
 
