@@ -2,19 +2,32 @@ require 'sinatra'
 require 'json'
 require 'pry'
 require 'active_model'
-
+# mock having a state or db for our server
+# this uses a global variable, never use in production
 $home = {}
 
+# ruby class, that includes validations from activerecord
+# represents home resource as ruby object
 class Home
+  #active model is part of ruby on rails
   include ActiveModel::Validations
+  # create some virtual attributes
+  # this well set a getter and a setter
+  #
   attr_accessor :town, :name, :description, :domain_name, :content_version
 
-  validates :town, presence: true
+  validates :town, presence: true, inclusion: { in: [
+    'melomaniac-mansion',
+    'cooker-cove',
+    'video-valley',
+    'the-nomad-pad',
+    'gamers-grotto'
+  ] }
   validates :name, presence: true
   validates :description, presence: true
-  validates :domain_name, 
+  validates :domain_name,
     format: { with: /\.cloudfront\.net\z/, message: "domain must be from .cloudfront.net" }
-    # uniqueness: true, 
+    # uniqueness: true,
 
   validates :content_version, numericality: { only_integer: true }
 end
@@ -98,7 +111,7 @@ class TerraTownsMockServer < Sinatra::Base
     home.description = description
     home.domain_name = domain_name
     home.content_version = content_version
-    
+
     unless home.valid?
       error 422, home.errors.messages.to_json
     end
